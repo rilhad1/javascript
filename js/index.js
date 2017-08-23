@@ -16,20 +16,20 @@ function solveQuadr(a, b, c) {
             return 'Немає розв`язку';
         }
         else {
-            x1 = (-1 * c) / b;
+            x1 = -c / b;
             x2 = x1;
         }
     }
     else {
         const d = discr(a, b, c);
         if (d === 0) {
-            x1 = (-1 * b) / (2 * a);
+            x1 = -b / 2 * a;
             x2 = x1;
 
         }
         else if (d > 0) {
-            x1 = ((-1 * b) + Math.sqrt(d)) / (2 * a);
-            x2 = ((-1 * b) - Math.sqrt(d)) / (2 * a);
+            x1 = (-b + Math.sqrt(d)) / (2 * a);
+            x2 = (-b - Math.sqrt(d)) / (2 * a);
         }
         else {
             return 'Немає розв`язку';
