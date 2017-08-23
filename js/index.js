@@ -2,28 +2,43 @@ const a = parseFloat(prompt('Enter A'));
 const b = parseFloat(prompt('Enter B'));
 const c = parseFloat(prompt('Enter C'));
 
-const solution = solveQuadr(a, b, c);
-document.write(solution);
+const res = solveQuadr(a, b, c);
+document.write(res);
 
 function discr(a, b, c) {
     return b * b - 4 * a * c;
 }
 
 function solveQuadr(a, b, c) {
-    const d = discr(a, b, c);
     let x1, x2;
-    if (d > 0) {
-        x1 = ((-1 * b) + Math.sqrt(d)) / (2 * a);
-        x2 = ((-1 * b) - Math.sqrt(d)) / (2 * a);
-
-    }
-    else if (d === 0) {
-        x1 = (-1 * b) / (2 * a);
-        x2 = x1;
+    if (a === 0) {
+        if (b === 0) {
+            return 'Немає розв`язку';
+        }
+        else {
+            x1 = (-1 * c) / b;
+            x2 = x1;
+        }
     }
     else {
-        document.write('Коренів немає')
+        const d = discr(a, b, c);
+        if (d === 0) {
+            x1 = (-1 * b) / (2 * a);
+            x2 = x1;
+
+        }
+        else if (d > 0) {
+            x1 = ((-1 * b) + Math.sqrt(d)) / (2 * a);
+            x2 = ((-1 * b) - Math.sqrt(d)) / (2 * a);
+        }
+        else {
+            return 'Немає розв`язку';
+        }
     }
-    return 'x1 = ' + x1 + ', x2= ' + x2;
-    return [x1, x2];
+    if (x1 === x2) {
+        return 'x = ' + x1
+    }
+    else {
+        return 'x1 = ' + x1 + '<br>x2 = ' + x2;
+    }
 }
